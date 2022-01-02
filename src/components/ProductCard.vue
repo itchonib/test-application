@@ -1,6 +1,6 @@
 <template>
   <div class="product-card">
-    <h3> This is the product card component </h3>
+    <h3> This is the product card component {{msg}} </h3>
   </div>
 </template>
 
