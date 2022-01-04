@@ -1,5 +1,6 @@
 //Break Points 
-$tablet: 768px;
+$tablet: 600px;
+$tablet-lg: 1024px;
 $desktop: 1280px;
 
 //media queries 
@@ -9,6 +10,13 @@ $desktop: 1280px;
         @content;
     }
 }
+
+@mixin tablet-lg {
+    @media (min-width: $tablet-lg) {
+        @content;
+    }
+}
+
 
 @mixin desktop {
     @media (min-width: $desktop) {
