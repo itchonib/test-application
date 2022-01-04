@@ -10,7 +10,7 @@
         />
       </div>
       <main class="store__content">
-        <h3 class="store__name">repzio store</h3>
+        <h2 class="store__name">repzio store</h2>
         <div class="store__products-wrapper">
           <p class="store__label">products</p>
           <div class="store__products">
@@ -50,7 +50,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scope lang="scss">
 .store {
   width: 100vw;
 
@@ -94,11 +94,13 @@ export default {
       flex-direction: row;
       justify-content: center;
       margin: 3rem 0;
+      align-items: baseline;
     }
   }
 
   &__name {
     margin: 1.8rem 0;
+    font-weight: 500;
 
     @include tablet-lg {
       width: 20%;
@@ -123,12 +125,9 @@ export default {
 
   &__products {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, auto));
+    grid-template-columns: repeat(auto-fit, minmax($min-card, auto));
     gap: 10px;
     width: 100%;
-    @include tablet {
-      grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
-    }
   }
 }
 </style>

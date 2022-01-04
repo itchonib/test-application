@@ -1,5 +1,8 @@
+@use './typography' as *;
+
 body {
   margin: 0;
+  font-family: $base-font;
 }
 
 h1,
