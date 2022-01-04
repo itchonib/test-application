@@ -5,7 +5,7 @@
         src="https://images.repzio.com/productimages/202/f124sdm_lg.jpg?width=130&format=png&quality=100&scale=down"
       />
       <h4 class="">Name of Product</h4>
-      <h5 class="product-price">{{ product.BasePrice }}</h5>
+      <h5 class="product-price">${{ product.BasePrice }}</h5>
     </router-link>
   </div>
 </template>

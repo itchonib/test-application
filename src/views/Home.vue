@@ -10,11 +10,19 @@
         />
       </div>
       <main class="store__content">
-        <h2 class="store__name">repzio store</h2>
+        <!-- <h2 class="store__name">repzio store</h2> -->
+        <StoreInfo/>
         <div class="store__products-wrapper">
-          <p class="store__label">products</p>
+          <div class="store__row">
+            <p class="store__label">products</p>
+            <p class="store__products-amount">10</p>
+          </div>
           <div class="store__products">
-            <ProductCard v-for="product in products" :key="product.BasePrice" v-bind:product="product" />
+            <ProductCard
+              v-for="product in products"
+              :key="product.BasePrice"
+              v-bind:product="product"
+            />
           </div>
         </div>
       </main>
@@ -24,12 +32,14 @@
 
 <script>
 import ProductCard from "@/components/ProductCard.vue";
+import StoreInfo from "../components/StoreInfo.vue";
 
 export default {
   name: "Home",
   components: {
     ProductCard,
-  },
+    StoreInfo
+},
   data() {
     return {
       products: [
@@ -98,22 +108,42 @@ export default {
     }
   }
 
-  &__name {
-    margin: 1.8rem 0;
-    font-weight: 500;
+  // &__name {
+  //   margin: 1.8rem 0;
+  //   font-weight: 500;
 
+  //   @include tablet-lg {
+  //     width: 20%;
+  //     margin: 0;
+  //   }
+  // }
+
+  &__row {
+    display: flex;
+
+    margin: 0.8rem 0;
     @include tablet-lg {
-      width: 20%;
-      margin: 0;
+      margin: 0 0rem 1rem 0;
+      align-items: flex-start;
     }
   }
 
   &__label {
-    margin: 0.8rem 0;
+    margin-right: 0.5rem;
+  }
 
-    @include tablet-lg {
-      margin: 0 0 1rem 0;
-    }
+  &__products-amount {
+    border-radius: 10px;
+    background: $gray-1;
+    color: white;
+    border: solid 1px $gray-1;
+    width: 2rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
   }
 
   &__products-wrapper {
