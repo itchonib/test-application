@@ -1,6 +1,5 @@
 <template>
   <div class="store">
-    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
     <div class="store__banner"></div>
     <div class="store__inner-wrapper">
       <div class="store__logo-wrapper">
@@ -10,7 +9,6 @@
         />
       </div>
       <main class="store__content">
-        <!-- <h2 class="store__name">repzio store</h2> -->
         <StoreInfo/>
         <div class="store__products-wrapper">
           <div class="store__row">
@@ -107,16 +105,6 @@ export default {
       align-items: baseline;
     }
   }
-
-  // &__name {
-  //   margin: 1.8rem 0;
-  //   font-weight: 500;
-
-  //   @include tablet-lg {
-  //     width: 20%;
-  //     margin: 0;
-  //   }
-  // }
 
   &__row {
     display: flex;
