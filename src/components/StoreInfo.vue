@@ -2,22 +2,19 @@
   <div class="store-info">
     <h2 class="store-info__name">repzio store</h2>
     <div class="store-info__contact">
+      <p>name:</p>
+      <p>Max Someone</p>
       <p>email</p>
-      <p>email value</p>
-      <p>email</p>
-      <p>email value</p>
-      <p>email</p>
-      <p>email value</p>
+      <p>max@repzio.com</p>
+      <p>phone</p>
+      <p>888-888-8888</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "ProductCard",
-  props: {
-    product: Object,
-  }
+  name: "StoreInfo",
 };
 </script>
 

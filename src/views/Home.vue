@@ -9,16 +9,16 @@
         />
       </div>
       <main class="store__content">
-        <StoreInfo/>
+        <StoreInfo />
         <div class="store__products-wrapper">
           <div class="store__row">
             <p class="store__label">products</p>
-            <p class="store__products-amount">10</p>
+            <p class="store__products-amount">{{products.length}}</p>
           </div>
           <div class="store__products">
             <ProductCard
               v-for="product in products"
-              :key="product.BasePrice"
+              :key="product.ItemID"
               v-bind:product="product"
             />
           </div>
@@ -31,30 +31,35 @@
 <script>
 import ProductCard from "@/components/ProductCard.vue";
 import StoreInfo from "../components/StoreInfo.vue";
+import dataSet from "../data/test.json"
+const {items, ...manufacturer} = dataSet
 
 export default {
   name: "Home",
   components: {
     ProductCard,
-    StoreInfo
-},
+    StoreInfo,
+  },
   data() {
     return {
-      products: [
-        { BasePrice: 12 },
-        { BasePrice: 0 },
-        { BasePrice: 0 },
-        { BasePrice: 0 },
-        { BasePrice: 0 },
-        { BasePrice: 0 },
-        { BasePrice: 0 },
-        { BasePrice: 0 },
-        { BasePrice: 0 },
-        { BasePrice: 0 },
-        { BasePrice: 0 },
-      ],
+      manufacturer: manufacturer,
+      products: items,
     };
   },
+  methods: {
+    formatPrice(price) {
+      return parseFloat(price).toFixed(2)
+    },
+    scaleDownImg(url, width) {
+      return url+`?width=${width}&height=${width}`
+    }
+  },
+  created () {
+    this.products.forEach((item) => {
+      item.FormattedPrice = this.formatPrice(item.BasePrice)
+      item.PreviewImg = this.scaleDownImg(item.PhotoName, 120)
+      })
+  }
 };
 </script>
 
@@ -108,7 +113,6 @@ export default {
 
   &__row {
     display: flex;
-
     margin: 0.8rem 0;
     @include tablet-lg {
       margin: 0 0rem 1rem 0;

@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="product">
     <h1>This is an about page {{ $route.params.id }}</h1>
     
   </div>
@@ -7,6 +7,6 @@
 
 <script>
 export default {
-  name: "About"
+  name: "Product"
 };
 </script>
