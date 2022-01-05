@@ -9,7 +9,6 @@ export const myMixin = {
   },
   methods: {
     formatImg(url, dimensions) {
-      console.log(url, dimensions);
       return (this.formattedImg = url + `?width=${dimensions}&height=${dimensions}`);
     },
   },

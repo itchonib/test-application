@@ -46,7 +46,7 @@ export default {
       products: items,
       salesRep: SalesRep
     };
-  },
+  }
 };
 </script>
 
