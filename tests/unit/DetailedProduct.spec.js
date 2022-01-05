@@ -11,7 +11,6 @@ describe("SingleProductPage.vue", () => {
       props: { product }
     });
     expect(wrapper.find('.product__name').text()).toContain(product.ItemName);
-    //need to update to formatted 
     expect(wrapper.find('.product__price').text()).toContain(product.BasePrice);
   });
 

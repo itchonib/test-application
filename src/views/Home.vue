@@ -1,6 +1,6 @@
 <template>
   <div class="store">
-    <div class="store__banner"></div>
+  <div class="store__banner"></div>
     <div class="store__inner-wrapper">
       <div class="store__logo-wrapper">
         <img
@@ -13,7 +13,7 @@
         <div class="store__products-wrapper">
           <div class="store__row">
             <p class="store__label">products</p>
-            <p class="store__products-amount">{{products.length}}</p>
+            <p class="store__products-amount">{{ products.length }}</p>
           </div>
           <div class="store__products">
             <ProductCard
@@ -31,8 +31,8 @@
 <script>
 import ProductCard from "@/components/ProductCard.vue";
 import StoreInfo from "../components/StoreInfo.vue";
-import dataSet from "../data/test.json"
-const {items, ...manufacturer} = dataSet
+import dataSet from "../data/test.json";
+const { items, ...manufacturer } = dataSet;
 
 export default {
   name: "Home",
@@ -45,7 +45,7 @@ export default {
       manufacturer: manufacturer,
       products: items,
     };
-  }
+  },
 };
 </script>
 
@@ -66,11 +66,12 @@ export default {
   &__inner-wrapper {
     padding: 0 0.7rem;
     margin: 0 auto;
+
+    @include tablet {
+      padding: 0 2rem;
+    }
     @include tablet-lg {
       max-width: 60.8125rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
   }
 
@@ -81,8 +82,8 @@ export default {
     filter: drop-shadow(1px 3px 10px rgba(0, 0, 0, 0.25));
     width: 10.6rem;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     margin-top: -32px;
   }
 
@@ -90,7 +91,6 @@ export default {
     width: 100%;
     @include tablet-lg {
       display: flex;
-      flex-direction: row;
       justify-content: center;
       margin: 3rem 0;
       align-items: baseline;
@@ -120,7 +120,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 12px;
+    font-size: $text-sm;
     font-weight: 700;
   }
 

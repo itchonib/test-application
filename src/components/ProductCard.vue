@@ -4,9 +4,9 @@
     <div class="product-card__info">
       <h4 class="product-card__name">{{ product.ItemName }}</h4>
       <div class="product-card__purchase">
-        <span class="no-stock__badges" v-if="product.OnHandQuantity < 0">
+        <p class="no-stock__badges" v-if="product.OnHandQuantity < 0">
           Out Of Stock
-        </span>
+        </p>
         <h5 class="product-card__price">${{ formatPrice }}</h5>
       </div>
     </div>
@@ -60,23 +60,20 @@ export default {
   }
 
   &__name {
-    font-size: 11px;
+    font-size: $text-sm;
     font-weight: 400;
     margin-right: 0.5rem;
-
-    @include tablet {
-      font-size: 12px;
-    }
   }
 
   &__price {
-    font-size: 12px;
+    font-size:  $text-sm;
     font-weight: 500;
   }
 
   .no-stock__badges {
-    font-size: 8px;
+    font-size: $text-2xs;
     background: none;
+    width: 100%;
     color: $red-1;
   }
 }

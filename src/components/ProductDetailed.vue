@@ -1,28 +1,30 @@
 <template>
   <section class="product">
-      <div class="product__image-wrapper">
-        <img class="product__image" :src="formattedImg" />
-      </div>
+    <div class="product__image-wrapper">
+      <img class="product__image" :src="formattedImg" />
+    </div>
     <div class="product__details">
       <h6>ID: {{ product.ItemID }}</h6>
       <h3 class="product__name">{{ product.ItemName }}</h3>
-      <h3
-        class="product__price"
-        v-bind:class="{ strike: product.OnHandQuantity <= 0 }"
-      >
-        ${{ formatPrice }}
+      <div class="product__row">
+        <h3
+          class="product__price"
+          v-bind:class="{ strike: product.OnHandQuantity <= 0 }"
+        >
+          ${{ formatPrice }}
+        </h3>
         <span class="no-stock__badge" v-if="product.OnHandQuantity <= 0">
           Out of stock
         </span>
-      </h3>
+      </div>
       <div v-if="product.Description">
         <p class="product__label">DESCRIPTION</p>
-        <p>{{ product.Description }}</p>
+        <p class="product__information">{{ product.Description }}</p>
       </div>
       <p class="product__label">DIMENSIONS:</p>
-      <p>{{ product.Dimensions }}</p>
+      <p class="product__information">{{ product.Dimensions }}</p>
       <p class="product__label" v-if="product.OnHandQuantity > 0">
-        Qty On Hand: {{ product.OnHandQuantity }}
+        QTY ON HAND: {{ product.OnHandQuantity }}
       </p>
     </div>
   </section>
@@ -47,8 +49,9 @@ export default {
 
 <style scoped lang="scss">
 .product {
+  margin-bottom: 2rem;
   @include tablet-lg {
-    padding-bottom: 4rem;
+    margin-bottom: 4rem;
     display: grid;
     grid-template-columns: 1fr 4fr;
     margin: 0 auto;
@@ -68,9 +71,19 @@ export default {
     }
   }
 
+  &__row {
+    display: flex;
+    align-items: center;
+    width: 9.5rem;
+  }
+
   &__label {
-    font-size: 12px;
+    font-size: $text-sm;
     margin: 0.8rem 0 0.3rem 0;
+  }
+
+  &__information {
+    font-size: $text-md;
   }
 }
 .strike {
@@ -78,11 +91,12 @@ export default {
 }
 .no-stock {
   &__badge {
-    font-size: 10px;
+    font-size: $text-xs;
     background: $red-1;
     color: white;
     border-radius: 20px;
     padding: 0.25rem;
+    margin-left: auto;
   }
 }
 </style>
