@@ -5,11 +5,11 @@
       <div class="store__logo-wrapper">
         <img
           class="store__logo"
-          src="http://images.repzio.com/productimages/772/logo772_lg.jpg?width=100"
+          :src="`http://images.repzio.com/productimages/${manufacturer.ManufacturerID}/logo${manufacturer.ManufacturerID}_lg.jpg?width=100`"
         />
       </div>
       <main class="store__content">
-        <StoreInfo />
+        <StoreInfo :salesRep="salesRep" />
         <div class="store__products-wrapper">
           <div class="store__row">
             <p class="store__label">products</p>
@@ -32,7 +32,7 @@
 import ProductCard from "@/components/ProductCard.vue";
 import StoreInfo from "../components/StoreInfo.vue";
 import dataSet from "../data/test.json";
-const { items, ...manufacturer } = dataSet;
+const { items, SalesRep, ...manufacturer } = dataSet;
 
 export default {
   name: "Home",
@@ -44,6 +44,7 @@ export default {
     return {
       manufacturer: manufacturer,
       products: items,
+      salesRep: SalesRep
     };
   },
 };

@@ -1,13 +1,13 @@
 <template>
   <div class="store-info">
-    <h2 class="store-info__name">repzio store</h2>
+    <h2 class="store-info__name">{{ salesRep.CompanyName }}</h2>
     <div class="store-info__contact">
-      <p>name:</p>
-      <p>Max Someone</p>
-      <p>email</p>
-      <p>max@repzio.com</p>
-      <p>phone</p>
-      <p>888-888-8888</p>
+      <p class="store-info__label">name:</p>
+      <p>{{ salesRep.FirstName + " " + salesRep.LastName }}</p>
+      <p class="store-info__label">email:</p>
+      <p>{{ salesRep.EmailAddress }}</p>
+      <p class="store-info__label">phone:</p>
+      <p>{{ salesRep.Phone }}</p>
     </div>
   </div>
 </template>
@@ -15,6 +15,9 @@
 <script>
 export default {
   name: "StoreInfo",
+  props: {
+    salesRep: Object,
+  },
 };
 </script>
 
@@ -33,8 +36,13 @@ export default {
   &__contact {
     margin-top: 1rem;
     display: grid;
-    grid-template-columns: 1fr 4fr;
-    grid-gap: 10px;
+    grid-template-columns: 2rem 1fr;
+    grid-gap: 20px;
+    font-size: $text-md;
+  }
+
+  &__label {
+    font-weight: 500;
   }
 }
 </style>
