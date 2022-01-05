@@ -1,24 +1,30 @@
 <template>
   <router-link class="product-card" :to="'/products/' + product.ItemID">
-    <img class="product-card__thumbnail" :src="product.PreviewImg" />
+    <img class="product-card__thumbnail" :src="formattedImg" />
     <div class="product-card__info">
       <h4 class="product-card__name">{{ product.ItemName }}</h4>
       <div class="product-card__purchase">
         <span class="no-stock__badges" v-if="product.OnHandQuantity < 0">
           Out Of Stock
         </span>
-        <h5 class="product-card__price">${{ product.FormattedPrice }}</h5>
+        <h5 class="product-card__price">${{ formatPrice }}</h5>
       </div>
     </div>
   </router-link>
 </template>
 
 <script>
+import { myMixin } from "@/mixins/ProductsMixin.js";
+
 export default {
   name: "ProductCard",
   props: {
     product: Object,
   },
+  data() {
+    return { dimensions: 120 };
+  },
+  mixins: [myMixin],
 };
 </script>
 

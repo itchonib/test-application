@@ -45,20 +45,6 @@ export default {
       manufacturer: manufacturer,
       products: items,
     };
-  },
-  methods: {
-    formatPrice(price) {
-      return parseFloat(price).toFixed(2)
-    },
-    scaleDownImg(url, width) {
-      return url+`?width=${width}&height=${width}`
-    }
-  },
-  created () {
-    this.products.forEach((item) => {
-      item.FormattedPrice = this.formatPrice(item.BasePrice)
-      item.PreviewImg = this.scaleDownImg(item.PhotoName, 120)
-      })
   }
 };
 </script>

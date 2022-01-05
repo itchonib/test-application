@@ -1,16 +1,16 @@
 <template>
   <section class="product">
-    <div>
       <div class="product__image-wrapper">
-        <img class="product__image" :src="product.PhotoName + append" />
+        <img class="product__image" :src="formattedImg" />
       </div>
-    </div>
     <div class="product__details">
       <h6>ID: {{ product.ItemID }}</h6>
       <h3 class="product__name">{{ product.ItemName }}</h3>
-      <!-- update this to formatted price need to extract formatted price to global mixin? or maybe utility class -->
-      <h3 class="product__price" v-bind:class="{ strike: product.OnHandQuantity <= 0 }">
-        ${{ product.BasePrice }}
+      <h3
+        class="product__price"
+        v-bind:class="{ strike: product.OnHandQuantity <= 0 }"
+      >
+        ${{ formatPrice }}
         <span class="no-stock__badge" v-if="product.OnHandQuantity <= 0">
           Out of stock
         </span>
@@ -29,14 +29,17 @@
 </template>
 
 <script>
+import { myMixin } from "@/mixins/ProductsMixin.js";
+
 export default {
   name: "DetailedProduct",
   props: {
     product: Object,
   },
+  mixins: [myMixin],
   data() {
     return {
-      append: "?width=250",
+      dimensions: "275",
     };
   },
 };
@@ -49,6 +52,8 @@ export default {
     display: grid;
     grid-template-columns: 1fr 4fr;
     margin: 0 auto;
+    min-height: 335px;
+    width: 75%;
   }
 
   &__image-wrapper {

@@ -5,11 +5,11 @@ import ProductCard from "@/components/ProductCard.vue";
 describe("ProductCard.vue", () => {
   it("renders props when passed", async () => {
     const product = {
-      FormattedPrice: "14.00",
+      BasePrice: "14.00",
     };
     const wrapper = shallowMount(ProductCard, {
       props: { product }
     });
-    expect(wrapper.find('.product-card__price').text()).toContain(product.FormattedPrice);
+    expect(wrapper.find('.product-card__price').text()).toContain(product.BasePrice);
   });
 });
