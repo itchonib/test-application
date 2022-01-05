@@ -1,7 +1,7 @@
 <template>
   <main>
     <router-link to="/">back to store</router-link>
-    <ProductDetailed  v-bind:product="product"/>
+    <ProductDetailed v-bind:product="product" />
     <section class="recommended">
       <div class="recommended__banner">
         <h3>check these out</h3>
@@ -27,10 +27,8 @@ export default {
   name: "Product",
   data() {
     return {
-      items: items,
-      product: null,
-      append: "?width=250",
-      recommended: [0, 0, 0],
+      product: {},
+      recommended: [{}, {}, {}],
     };
   },
   methods: {
@@ -38,18 +36,22 @@ export default {
       this.product = items.find((item) => item.ItemID === itemId);
     },
     createRecommended() {
-      this.recommended = this.recommended.map(() => {
-        return items[Math.floor(Math.random() * items.length)];
-      });
+      const eligibleItems = items.filter(
+        (item) =>
+          this.$route.params.id !== item.ItemID && item.OnHandQuantity > 0
+      );
+
+      this.recommended = eligibleItems.splice(0, 3);
     },
   },
-  created() {
+  async created() {
     this.selectProduct(this.$route.params.id);
     this.createRecommended();
   },
   watch: {
     $route() {
       this.selectProduct(this.$route.params.id);
+      this.createRecommended();
     },
   },
   components: { ProductDetailed, ProductCard },
@@ -85,5 +87,4 @@ main {
     }
   }
 }
-
 </style>
