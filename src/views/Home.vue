@@ -63,7 +63,7 @@ export default {
 };
 </script>
 
-<style scope lang="scss">
+<style scoped lang="scss">
 .store {
   width: 100vw;
 

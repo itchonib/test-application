@@ -1,27 +1,43 @@
 <template>
-  <main class="product">
-    <div>
-      <p>back to store</p>
-      <div class="product__image-wrapper">
-        <img class="product__image" :src="product.PhotoName + append" />
+  <main>
+    <section class="product">
+      <div>
+        <router-link to="/">back to store</router-link>
+        <!-- <p></p> -->
+        <div class="product__image-wrapper">
+          <img class="product__image" :src="product.PhotoName + append" />
+        </div>
       </div>
-    </div>
-    <div class="product__details">
-      <h6>{{ product.ItemID }}</h6>
-      <h3>{{ product.ItemName }}</h3>
-      <!-- update this to formatted price need to extract formatted price to global mixin? or maybe utility class -->
-      <h3>${{ product.BasePrice }}</h3>
-      <p class="product__label">DESCRIPTION</p>
-      <p>{{ product.Description }}</p>
-      <p class="product__label">DIMENSIONS:</p>
-      <p>{{ product.Dimensions }}</p>
-      <p class="product__label">Qty On Hand: {{ product.OnHandQuantity }}</p>
-    </div>
+      <div class="product__details">
+        <h6>{{ product.ItemID }}</h6>
+        <h3>{{ product.ItemName }}</h3>
+        <!-- update this to formatted price need to extract formatted price to global mixin? or maybe utility class -->
+        <h3>${{ product.BasePrice }}</h3>
+        <p class="product__label">DESCRIPTION</p>
+        <p>{{ product.Description }}</p>
+        <p class="product__label">DIMENSIONS:</p>
+        <p>{{ product.Dimensions }}</p>
+        <p class="product__label">Qty On Hand: {{ product.OnHandQuantity }}</p>
+      </div>
+    </section>
+    <section class="recommended">
+      <div class="recommended__banner">
+        <h3>check these out</h3>
+      </div>
+      <div class="recommended__list">
+        <ProductCard
+          v-for="product in recommended"
+          :key="product.ItemID"
+          v-bind:product="product"
+        />
+      </div>
+    </section>
   </main>
 </template>
 
 <script>
 import dataSet from "../data/test.json";
+import ProductCard from "../components/ProductCard.vue";
 const { items } = dataSet;
 
 export default {
@@ -31,28 +47,44 @@ export default {
       items: items,
       product: null,
       append: "?width=250",
+      recommended: [0, 0, 0],
     };
   },
   methods: {
-    findItem(itemId) {
-      return items.find((item) => item.ItemID === itemId);
+    selectProduct(itemId) {
+      this.product = items.find((item) => item.ItemID === itemId);
     },
   },
   created() {
-    this.product = this.findItem(this.$route.params.id);
+    this.selectProduct(this.$route.params.id);
+    this.recommended = this.recommended.map(
+      () => items[Math.floor(Math.random() * items.length)]
+    );
   },
+  watch: {
+    $route() {
+      this.selectProduct(this.$route.params.id);
+    },
+  },
+  components: { ProductCard },
 };
 </script>
 
-<style scope lang="scss">
-.product {
+<style scoped lang="scss">
+main {
   padding: 2rem 1rem;
 
   @include tablet-lg {
-    padding: 4rem;
+    padding: 5rem;
+  }
+}
+
+.product {
+  @include tablet-lg {
+    padding-bottom: 4rem;
     max-width: 60.8125rem;
     display: grid;
-    grid-template-columns: 1fr 4fr ;
+    grid-template-columns: 1fr 4fr;
     margin: 0 auto;
   }
 
@@ -71,6 +103,27 @@ export default {
   &__label {
     font-size: 12px;
     margin: 0.8rem 0 0.3rem 0;
+  }
+}
+
+.recommended {
+  &__banner {
+    width: 100%;
+    margin: 0 0 1.5rem auto;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+
+    @include tablet {
+      flex-direction: row;
+      max-width: 60.8125rem;
+      margin: 0 auto;
+      justify-content: center;
+    }
   }
 }
 </style>

@@ -1,10 +1,7 @@
 <template>
   <!-- <div > -->
-  <router-link class="product-card" :to="'/products/'+product.ItemID">
-    <img
-      class="product-card__thumbnail"
-      :src=product.PreviewImg
-    />
+  <router-link class="product-card" :to="'/products/' + product.ItemID">
+    <img class="product-card__thumbnail" :src="product.PreviewImg" />
     <div class="product-card__info">
       <h4 class="product-card__name">{{ product.ItemName }}</h4>
       <h5 class="product-card__price">${{ product.FormattedPrice }}</h5>
@@ -14,7 +11,6 @@
 </template>
 
 <script>
-
 export default {
   name: "ProductCard",
   props: {
@@ -33,6 +29,11 @@ export default {
   padding: 0.5rem;
   box-sizing: border-box;
   width: 100%;
+  max-width: 22rem;
+
+  @include tablet {
+    max-width: 13rem;
+  }
 
   &__thumbnail {
     margin: auto auto;
