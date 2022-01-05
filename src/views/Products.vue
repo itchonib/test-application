@@ -54,12 +54,15 @@ export default {
     selectProduct(itemId) {
       this.product = items.find((item) => item.ItemID === itemId);
     },
+    createRecommended() {
+      this.recommended = this.recommended.map(() => {
+        return items[Math.floor(Math.random() * items.length)]
+      })
+    }
   },
   created() {
     this.selectProduct(this.$route.params.id);
-    this.recommended = this.recommended.map(
-      () => items[Math.floor(Math.random() * items.length)]
-    );
+    this.createRecommended()
   },
   watch: {
     $route() {

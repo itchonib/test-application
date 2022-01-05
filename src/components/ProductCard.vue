@@ -1,5 +1,4 @@
 <template>
-  <!-- <div > -->
   <router-link class="product-card" :to="'/products/' + product.ItemID">
     <img class="product-card__thumbnail" :src="product.PreviewImg" />
     <div class="product-card__info">
@@ -7,7 +6,6 @@
       <h5 class="product-card__price">${{ product.FormattedPrice }}</h5>
     </div>
   </router-link>
-  <!-- </div> -->
 </template>
 
 <script>
