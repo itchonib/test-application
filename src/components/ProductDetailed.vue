@@ -14,7 +14,7 @@
       <div class="product__row">
         <h3
           class="product__price"
-          v-bind:class="{ strike: product.OnHandQuantity <= 0 }"
+          :class="{ strike: product.OnHandQuantity <= 0 }"
         >
           ${{ formatPrice }}
         </h3>

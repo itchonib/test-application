@@ -1,6 +1,11 @@
 <template>
   <router-link class="product-card" :to="'/products/' + product.ItemID">
-    <img class="product-card__thumbnail" :src="formattedImg" :alt="'image of the ' + product.ItemName"  loading="lazy" />
+    <img
+      class="product-card__thumbnail"
+      :src="formattedImg"
+      :alt="'image of the ' + product.ItemName"
+      loading="lazy"
+    />
     <div class="product-card__info">
       <h4 class="product-card__name">{{ product.ItemName }}</h4>
       <div class="product-card__purchase">
@@ -21,10 +26,11 @@ export default {
   props: {
     product: Object,
   },
+      mixins: [productMixin],
   data() {
     return { dimensions: 120 };
   },
-  mixins: [productMixin],
+  
 };
 </script>
 
@@ -66,7 +72,7 @@ export default {
   }
 
   &__price {
-    font-size:  $text-sm;
+    font-size: $text-sm;
     font-weight: 500;
   }
 

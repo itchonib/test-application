@@ -19,7 +19,7 @@
             <ProductCard
               v-for="product in products"
               :key="product.ItemID"
-              v-bind:product="product"
+              :product="product"
             />
           </div>
         </div>

@@ -1,7 +1,7 @@
 <template>
   <main>
     <router-link to="/">back to store</router-link>
-    <ProductDetailed v-if="product" v-bind:product="product" />
+    <ProductDetailed v-if="product" :product="product" />
     <section class="recommended">
       <div class="recommended__banner">
         <h3>check these out</h3>
@@ -10,7 +10,7 @@
         <ProductCard
           v-for="product in recommended"
           :key="product.ItemID"
-          v-bind:product="product"
+          :product="product"
         />
       </div>
     </section>
@@ -47,7 +47,6 @@ export default {
         (item) =>
           this.$route.params.id !== item.ItemID && item.OnHandQuantity > 0
       );
-
       this.recommended = eligibleItems.splice(0, 3);
     },
   },
@@ -56,8 +55,8 @@ export default {
   },
 
   watch: {
-    $route() {
-      this.selectProduct(this.$route.params.id);
+    $route(currentRoute) {
+      this.selectProduct(currentRoute.params.id);
       this.createRecommended();
     },
   },
