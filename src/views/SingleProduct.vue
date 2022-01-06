@@ -1,7 +1,7 @@
 <template>
   <main>
     <router-link to="/">back to store</router-link>
-    <ProductDetailed v-bind:product="product" />
+    <ProductDetailed v-if="product" v-bind:product="product" />
     <section class="recommended">
       <div class="recommended__banner">
         <h3>check these out</h3>
@@ -17,26 +17,33 @@
   </main>
 </template>
 
-<script>
-import dataSet from "../data/test.json";
+<script defer>
 import ProductCard from "../components/ProductCard.vue";
 import ProductDetailed from "../components/ProductDetailed.vue";
-const { items } = dataSet;
+import { apiMixin } from "@/mixins/apiMixin.js";
 
 export default {
   name: "Product",
   data() {
     return {
-      product: {},
+      product: null,
       recommended: [{}, {}, {}],
     };
   },
+  mixins: [apiMixin],
   methods: {
+    async intiateData() {
+      const response = await this.getAllProducts();
+      console.log(response);
+      this.selectProduct(this.$route.params.id);
+      this.createRecommended();
+    },
     selectProduct(itemId) {
-      this.product = items.find((item) => item.ItemID === itemId);
+      console.log(this.$data, itemId);
+      this.product = this.$data.products.find((item) => item.ItemID === itemId);
     },
     createRecommended() {
-      const eligibleItems = items.filter(
+      const eligibleItems = this.$data.products.filter(
         (item) =>
           this.$route.params.id !== item.ItemID && item.OnHandQuantity > 0
       );
@@ -44,10 +51,10 @@ export default {
       this.recommended = eligibleItems.splice(0, 3);
     },
   },
-  async created() {
-    this.selectProduct(this.$route.params.id);
-    this.createRecommended();
+  created() {
+    this.intiateData();
   },
+
   watch: {
     $route() {
       this.selectProduct(this.$route.params.id);

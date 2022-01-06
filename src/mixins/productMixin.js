@@ -1,4 +1,4 @@
-export const myMixin = {
+export const productMixin = {
   data() {
     return { formattedImg: " " };
   },

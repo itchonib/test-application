@@ -1,6 +1,6 @@
 <template>
   <div class="store">
-  <div class="store__banner"></div>
+    <div class="store__banner"></div>
     <div class="store__inner-wrapper">
       <div class="store__logo-wrapper">
         <img
@@ -31,8 +31,7 @@
 <script>
 import ProductCard from "@/components/ProductCard.vue";
 import StoreInfo from "../components/StoreInfo.vue";
-import dataSet from "../data/test.json";
-const { items, SalesRep, ...manufacturer } = dataSet;
+import { apiMixin } from "@/mixins/apiMixin.js";
 
 export default {
   name: "Home",
@@ -42,10 +41,14 @@ export default {
   },
   data() {
     return {
-      manufacturer: manufacturer,
-      products: items,
-      salesRep: SalesRep
+      manufacturer: {},
+      products: [],
+      salesRep: {},
     };
+  },
+  mixins: [apiMixin],
+  created() {
+    this.getAllProducts();
   }
 };
 </script>

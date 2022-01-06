@@ -31,14 +31,14 @@
 </template>
 
 <script>
-import { myMixin } from "@/mixins/ProductsMixin.js";
+import { productMixin } from "@/mixins/productMixin.js";
 
 export default {
   name: "DetailedProduct",
   props: {
     product: Object,
   },
-  mixins: [myMixin],
+  mixins: [productMixin],
   data() {
     return {
       dimensions: "275",

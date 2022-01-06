@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { myMixin } from "@/mixins/ProductsMixin.js";
+import { productMixin } from "@/mixins/productMixin.js";
 
 export default {
   name: "ProductCard",
@@ -24,7 +24,7 @@ export default {
   data() {
     return { dimensions: 120 };
   },
-  mixins: [myMixin],
+  mixins: [productMixin],
 };
 </script>
 
