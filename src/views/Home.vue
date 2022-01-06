@@ -12,7 +12,7 @@
         <StoreInfo :salesRep="salesRep" />
         <div class="store__products-wrapper">
           <div class="store__row">
-            <p class="store__label">products</p>
+            <p class="store__tab">products</p>
             <p class="store__products-amount">{{ products.length }}</p>
           </div>
           <div class="store__products">
@@ -60,11 +60,7 @@ export default {
   &__banner {
     height: 8rem;
     width: 100%;
-    background: linear-gradient(
-      88.49deg,
-      #edb89d 13.96%,
-      rgba(255, 217, 100, 0.69) 69.01%
-    );
+    background: rgba($color: $yellow-1, $alpha: 0.7);
   }
 
   &__inner-wrapper {
@@ -110,8 +106,9 @@ export default {
     }
   }
 
-  &__label {
+  &__tab {
     margin-right: 0.5rem;
+    @include yellow-underline;
   }
 
   &__products-amount {

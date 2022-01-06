@@ -1,10 +1,10 @@
 <template>
   <main>
-    <router-link to="/">back to store</router-link>
+    <router-link class="hover-underline-animation" to="/">back to store</router-link>
     <ProductDetailed v-if="product" :product="product" />
     <section class="recommended">
       <div class="recommended__banner">
-        <h3>check these out</h3>
+        <h3> check these out</h3>
       </div>
       <div class="recommended__list">
         <ProductCard
@@ -17,7 +17,7 @@
   </main>
 </template>
 
-<script defer>
+<script>
 import ProductCard from "../components/ProductCard.vue";
 import ProductDetailed from "../components/ProductDetailed.vue";
 import { apiMixin } from "@/mixins/apiMixin.js";
@@ -69,7 +69,7 @@ main {
   padding: 2rem 1rem;
 
   @include tablet-lg {
-    padding: 5rem;
+    padding: 3rem 5rem;
     max-width: 60.8125rem;
     margin: 0 auto;
   }

@@ -23,3 +23,10 @@ $desktop: 1280px;
         @content;
     }
 }
+
+//custom styles
+@mixin yellow-underline {
+    text-decoration: underline;
+    text-decoration-color:$yellow-1;
+    text-decoration-thickness: 0.15rem;
+}

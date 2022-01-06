@@ -31,6 +31,7 @@ export default {
 
   &__name {
     font-weight: 500;
+    @include yellow-underline;
   }
 
   &__contact {
