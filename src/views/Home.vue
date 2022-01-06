@@ -49,7 +49,7 @@ export default {
   mixins: [apiMixin],
   created() {
     this.getAllProducts();
-  }
+  },
 };
 </script>
 

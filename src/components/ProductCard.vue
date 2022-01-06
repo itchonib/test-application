@@ -1,6 +1,6 @@
 <template>
   <router-link class="product-card" :to="'/products/' + product.ItemID">
-    <img class="product-card__thumbnail" :src="formattedImg" />
+    <img class="product-card__thumbnail" :src="formattedImg" :alt="'image of the ' + product.ItemName"  loading="lazy" />
     <div class="product-card__info">
       <h4 class="product-card__name">{{ product.ItemName }}</h4>
       <div class="product-card__purchase">

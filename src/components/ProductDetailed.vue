@@ -1,7 +1,12 @@
 <template>
   <section class="product">
     <div class="product__image-wrapper">
-      <img class="product__image" :src="formattedImg" />
+      <img
+        class="product__image"
+        :src="formattedImg"
+        :alt="'image of the ' + product.ItemName"
+        loading="lazy"
+      />
     </div>
     <div class="product__details">
       <h6>ID: {{ product.ItemID }}</h6>
