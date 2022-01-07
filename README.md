@@ -2,6 +2,8 @@
 
 ## Description
 
+This code base was created to display products in a store from an outside API. 
+
 This repo is for the following [task](https://github.com/RepZio/TestApplication/blob/master/README.md).
 The live site can be viewed [here](https://ib-juniper-test-application.vercel.app/).
 
