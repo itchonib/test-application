@@ -41,7 +41,7 @@ For packages used for testing please see the testing section.
 The front end was built with Vue 3 and styled using scss files. The following additional packages were added
 
 - [`sass`](https://yarnpkg.com/package/sass) was used to allow use of scss files within vue
-- [`sass-loader`](https://yarnpkg.com/package/sass-loader) v10 was used, as updated versions were note compatible with 
+- [`sass-loader`](https://yarnpkg.com/package/sass-loader) v10 was used, as updated versions were not compatible 
 - [`vue-router`](https://yarnpkg.com//package/vue-router) was used to set up routing 
 - [`axios`](https://yarnpkg.com/package/axios) was used to call to the JSON file 
 
