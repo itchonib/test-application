@@ -4,7 +4,7 @@
 
 This code base was created to display products in a store from an outside API.
 
-The live site can be viewed [here](https://ib-juniper-test-application.vercel.app/).
+The live site can be viewed [here](https://ib-test-application.vercel.app/).
 
 ## 🌱 Set Up
 
