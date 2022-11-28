@@ -17,7 +17,7 @@ The live site can be viewed [here](https://ib-test-application.vercel.app/).
 
 1. Any user visiting the page can use the site
 
-## 💡 General Solution Plan
+## 💡 General Plan
 
 1. Research project set up best practices and create general responsive [design](https://www.figma.com/file/znPk3VztDn1XAvGjhvaZzU/Juniper-Test-Application)
 2. Start file set up (organize files) and set up router
