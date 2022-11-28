@@ -1,14 +1,14 @@
 <template>
   <div class="store-info">
     <h2 class="store-info__name">{{ salesRep.CompanyName }}</h2>
-    <p>SalesRep Contact: </p>
+    <p>SalesRep Contact:</p>
     <div class="store-info__contact">
       <p class="store-info__label">name:</p>
-      <p>{{ salesRep.FirstName + " " + salesRep.LastName }}</p>
+      <p>Alice Apple</p>
       <p class="store-info__label">email:</p>
-      <a :href="'mailto:' + salesRep.EmailAddress">{{ salesRep.EmailAddress }}</a>
+      <a :href="'mailto:' + salesRep.EmailAddress"> someone@test.com</a>
       <p class="store-info__label">phone:</p>
-      <a :href="'tel:+' + salesRep.phone">{{ salesRep.Phone }}</a>
+      <a :href="'tel:+' + salesRep.phone"> 555-555-5555 </a>
     </div>
   </div>
 </template>
